@@ -1,0 +1,3 @@
+/Users/kaposvarigergo/CLionProjects/FallingSand/cmake-build-debug/CMakeFiles/FallingSand.dir
+/Users/kaposvarigergo/CLionProjects/FallingSand/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kaposvarigergo/CLionProjects/FallingSand/cmake-build-debug/CMakeFiles/rebuild_cache.dir
