@@ -7,11 +7,12 @@ class PowderParticle : public Particle {
 public:
 
     explicit PowderParticle(bool pointy) : Particle(POWDER), pointy(pointy) {
+        Particle::setNeighborhoodSize(3);
     }
 
     void display() const override {}
 
-    std::pair<int, int> nextPosition(std::array<std::array<Particle*, 3>, 3>& neighborhood, bool direction) override;
+    std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) override;
 };
 
 #endif // POWDERPARTICLE_H

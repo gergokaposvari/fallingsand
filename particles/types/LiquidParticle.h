@@ -12,10 +12,12 @@ class LiquidParticle : public Particle {
     int boilingPoint;
     int freezingPoint;
 
-    int density;
+    int density = 997;
 
 public:
-    LiquidParticle() : Particle(LIQUID) { }
+    LiquidParticle() : Particle(LIQUID) {
+        this->Particle::setNeighborhoodSize(11);
+    }
 
     void display() const override { }
 
@@ -25,9 +27,13 @@ public:
     void setFreezingPoint(int freezingPoint) { this->freezingPoint = freezingPoint; }
     int getFreezingPoint() { return this->freezingPoint; }
 
+    void setDensity(int density) override { this->density = density; }
+    int getDensity() override { return this->density; }
 
 
-    std::pair<int, int> nextPosition(std::array<std::array<Particle*, 3>, 3>& neighborhood, bool direction) override;
+
+
+    std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) override;
 };
 
 #endif //LIQUIDPARTICLE_H

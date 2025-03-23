@@ -14,6 +14,8 @@ class Particle {
 
     int temperature;
 
+    int neighborhoodSize = 1;
+
 
 public:
 
@@ -39,12 +41,19 @@ public:
     virtual int getTemperature() const { return temperature; }
     virtual void setTemperature(int temperature) { this->temperature = temperature; }
 
+    virtual int getDensity() {return -1;}
+    virtual void setDensity(int density) { return;}
+
+    virtual int getNeighborhoodSize() { return neighborhoodSize; }
+    virtual void setNeighborhoodSize(int size) { neighborhoodSize = size; }
+
+
     virtual Particle* freeze() {
         return new Particle();
     }
 
 
-    virtual std::pair<int, int> nextPosition(std::array<std::array<Particle*, 3>, 3>& neighborhood, bool direction) { return {2,2}; }
+    virtual std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) { return {2,2}; }
 };
 
 #endif // PARTICLE_H

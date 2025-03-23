@@ -4,7 +4,7 @@
 #include "PowderParticle.h"
 #include <cstdlib>
 
-std::pair<int, int> PowderParticle::nextPosition(std::array<std::array<Particle*, 3>, 3>& neighborhood, bool direction) {
+std::pair<int, int> PowderParticle::nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) {
     if (neighborhood[2][1]->getState() == State::EMPTY || neighborhood[2][1]->getState() == State::LIQUID) {
         return std::make_pair(1, 0);
     }

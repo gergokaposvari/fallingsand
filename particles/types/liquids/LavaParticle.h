@@ -15,6 +15,7 @@ public:
         setFreezingPoint(20);
         setBoilingPoint(20000000);
         Particle::setTemperature(600);
+        LiquidParticle::setDensity(3100);
         color = rand() % 5;
     };
 
