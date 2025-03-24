@@ -25,8 +25,6 @@ public:
     std::list<Particle*> movedParticles;
     int tickRate = 0;
 
-    int balrament = 0;
-    int jobbrament = 0;
 
 
     ParticleManager particleManager;
@@ -72,57 +70,62 @@ public:
 
 
     void simulateTurn() {
-        for (int x = 1; x < rows-1; ++x) {
-            for (int y = 1; y < cols-1; ++y) {
-                if (grid[x][y]->getTraversed())
-                    continue;
-                int size = grid[x][y]->getNeighborhoodSize();
-                int radius = size / 2;
-
-                constexpr int MAX_SIZE = 11;
-                std::array<std::array<Particle*, MAX_SIZE>, MAX_SIZE> neighborhood;
-                if (size > MAX_SIZE) size = MAX_SIZE;
-
-
-                for (int dx = -radius; dx <= radius; ++dx) {
-                    for (int dy = -radius; dy <= radius; ++dy) {
-                        int nx = x + dx;
-                        int ny = y + dy;
-
-                        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols) {
-                            neighborhood[dx + radius][dy + radius] = grid[nx][ny];
-
-                        } else {
-                            neighborhood[dx + radius][dy + radius] = nullptr;
-                        }
-                    }
+        for (int x = rows-2; x > 0; x--) {
+            if (x % 2 == 0) {
+                for (int y = 1; y < cols - 1; y++) {
+                    processParticle(x, y);
                 }
-                std::pair move = grid[x][y]->nextPosition(neighborhood, dist(gen) == 0);
-
-
-                if (move != std::make_pair(2, 2)) {
-                    if (move == std::make_pair(3, 3)) {
-                        grid[x][y] = grid[x][y]->freeze();
-                    }else {
-                        if (move.second < 0){
-                            balrament++;
-                        }
-                        if (move.second > 0) {
-                            jobbrament++;
-                        }
-                        Particle *temp = new Particle();
-                        temp = grid[x][y];
-                        grid[x][y] = grid[x+move.first][y+move.second];
-                        grid[x+move.first][y+move.second] = temp;
-
-                        grid[x+move.first][y+move.second]->setTraversed(true);
-                        movedParticles.push_back(grid[x+move.first][y+move.second]);
-
-                    }
+            } else {
+                for (int y = cols - 2; y > 0; y--) {
+                    processParticle(x, y);
                 }
             }
         }
         flushMoved();
+    }
+
+    // This is needed to alternate left to right order
+    void processParticle(int x, int y) {
+        if (grid[x][y]->getTraversed())
+            return;
+        int size = grid[x][y]->getNeighborhoodSize();
+        int radius = size / 2;
+
+        constexpr int MAX_SIZE = 11;
+        std::array<std::array<Particle*, MAX_SIZE>, MAX_SIZE> neighborhood;
+        if (size > MAX_SIZE) size = MAX_SIZE;
+
+
+        for (int dx = -radius; dx <= radius; ++dx) {
+            for (int dy = -radius; dy <= radius; ++dy) {
+                int nx = x + dx;
+                int ny = y + dy;
+
+                if (nx >= 0 && nx < rows && ny >= 0 && ny < cols) {
+                    neighborhood[dx + radius][dy + radius] = grid[nx][ny];
+
+                } else {
+                    neighborhood[dx + radius][dy + radius] = nullptr;
+                }
+            }
+        }
+        std::pair move = grid[x][y]->nextPosition(neighborhood, !(dist(gen) == 0));
+
+
+        if (move != std::make_pair(2, 2)) {
+            if (move == std::make_pair(3, 3)) {
+                grid[x][y] = grid[x][y]->freeze();
+            }else {
+                Particle *temp = new Particle();
+                temp = grid[x][y];
+                grid[x][y] = grid[x+move.first][y+move.second];
+                grid[x+move.first][y+move.second] = temp;
+
+                grid[x+move.first][y+move.second]->setTraversed(true);
+                movedParticles.push_back(grid[x+move.first][y+move.second]);
+
+            }
+        }
     }
 
     void displayGrid() {
@@ -139,8 +142,6 @@ public:
         for (Particle* p : movedParticles) {
             p->setTraversed(false);
         }
-        std::cout << "balra:" << balrament << std::endl;
-        std::cout << "jobbra:" << jobbrament << std::endl;
     }
 
     void putCell(int x, int y) {

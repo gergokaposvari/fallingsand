@@ -5,7 +5,7 @@
 
 std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) {
 
-    /*int avgTemp = 0;
+    int avgTemp = 0;
     int countedParticles = 0;
     for (int i = 4; i <= 6; i++) {
         for (int j = 4; j <= 6; j++ ) {
@@ -18,7 +18,7 @@ std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle 
     avgTemp /= countedParticles;
     if (avgTemp < this->getFreezingPoint()) {
         return std::make_pair(3, 3);
-    }*/
+    }
 
 
     if (neighborhood[6][5]->getState() == EMPTY ||(neighborhood[6][5]->getState() == LIQUID && neighborhood[6][5]->getDensity() < density)) {
@@ -32,32 +32,28 @@ std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle 
 
     bool isLeftDownEmpty = leftDown == EMPTY;
     bool isRightDownEmpty = rightDown == EMPTY;
-    bool isLeftEmpty = left == EMPTY;
-    bool isRightEmpty = right == EMPTY;
 
-    if (isLeftEmpty && isRightEmpty) {
-        return direction ? std::make_pair(0, 1) : std::make_pair(0, -1);
-    } else if (isRightEmpty) {
-        return std::make_pair(0, 1);
-    }else if (isLeftEmpty) {
-        return std::make_pair(0, -1);
-    } else if (isLeftDownEmpty && isRightDownEmpty) {
+    if (isLeftDownEmpty && isRightDownEmpty) {
         return direction ? std::make_pair(1, 1) : std::make_pair(1, -1);
     }
 
-    for (int i = 5; i > 1; i--) {
+    // Véletlenszerűen választ egy irányt, és abban az irányban legfeljebb 5 távolságra keres helyet
+    for (int i = 1; i < 6; i++) {
         if (direction) {
-            if (neighborhood[5][5+i] != nullptr && neighborhood[5][5+i]->getState() == EMPTY) {
-
+            if (neighborhood[5][5 + i] != nullptr && (neighborhood[5][5 + i]->getState() == EMPTY || (
+                    neighborhood[5][5 + i]->getState() == LIQUID && neighborhood[5][5 + i]->getDensity() < density))) {
                 return std::make_pair(0, i);
             }
         }else {
-            if (neighborhood[5][5-i] != nullptr && neighborhood[5][5-i]->getState() == EMPTY) {
-
+            if (neighborhood[5][5-i] != nullptr && (neighborhood[5][5-i]->getState() == EMPTY || (
+                    neighborhood[5][5-i]->getState() == LIQUID && neighborhood[5][5-i]->getDensity() < density))) {
                 return std::make_pair(0, -i);
             }
         }
     }
+
+
+
 
 
 
