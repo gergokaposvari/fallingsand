@@ -9,20 +9,23 @@
 #include "../Particle.h"
 
 class LiquidParticle : public Particle {
-    int boilingPoint;
+    //int boilingPoint;
     int freezingPoint;
 
     int density = 997;
 
 public:
+    // Sets the Liquids neighborhood to 11x11 grid, because for smoother water a lateral move of 5 is helpful
     LiquidParticle() : Particle(LIQUID) {
         this->Particle::setNeighborhoodSize(11);
     }
 
+
     void display() const override { }
 
-    void setBoilingPoint(int boilingPoint) { this->boilingPoint = boilingPoint; }
-    int getBoilingPoint() { return this->boilingPoint; }
+    //void setBoilingPoint(int boilingPoint) { this->boilingPoint = boilingPoint; }
+    //int getBoilingPoint() { return this->boilingPoint; }
+
 
     void setFreezingPoint(int freezingPoint) { this->freezingPoint = freezingPoint; }
     int getFreezingPoint() { return this->freezingPoint; }

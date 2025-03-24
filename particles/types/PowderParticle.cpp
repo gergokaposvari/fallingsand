@@ -5,6 +5,11 @@
 #include <cstdlib>
 
 std::pair<int, int> PowderParticle::nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) {
+
+    // !!! Neighborhood is indexed absolutely in the 11x11 grid, the return value is given as where
+    // should the current particle move next relative to its current position !!!
+
+    // If the powder is not pointy then it falls down half the time
     if ((rand() % 2 == 0 || pointy) && neighborhood[2][1]->getState() == State::EMPTY || neighborhood[2][1]->getState() == State::LIQUID) {
         return std::make_pair(1, 0);
     }

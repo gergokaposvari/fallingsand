@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD 26)
 find_package(SDL2 REQUIRED)
 
 add_executable(FallingSand main.cpp
-        particles/Particle.cpp
         particles/Particle.h
         FSsimulation/Simulation.cpp
         FSsimulation/Simulation.h

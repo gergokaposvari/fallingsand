@@ -9,21 +9,27 @@
 #include "types/State.h"
 
 class Particle {
+    // The state of the particle (empty, powder, liquid solid)
     State state;
+
+    // Stores if the particle has moved this turn
     bool traversed = false;
 
+    // Temp of the particle
     int temperature;
 
-    int neighborhoodSize = 3;
+    // The size of the neighborhood which is looked at when asking the particle to move
+    int neighborhoodSize = 1;
 
 
 public:
 
 
-
+    // Default particle is empty
     Particle(State state = EMPTY) : state(state) {
         Particle::setTemperature(123);
     }
+
 
     virtual ~Particle() {}
 
@@ -56,7 +62,8 @@ public:
         return new Particle();
     }
 
-
+    // Given the current neighborhood the particle determines where to move next,
+    // direction is used to decide left or right, it is generated randomly in simulation.h
     virtual std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) { return {2,2}; }
 };
 

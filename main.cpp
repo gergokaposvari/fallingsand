@@ -9,6 +9,7 @@ bool running = true;
 bool placing = false;
 int BRUSH_SIZE = 5;
 
+// Places cells in a BRUSH_SIZE sized square
 void mousePress(Simulation& mainSimulation) {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
@@ -17,7 +18,7 @@ void mousePress(Simulation& mainSimulation) {
     int gridY = mouseY / CELL_SIZE;
 
     if (BRUSH_SIZE == 1) {
-        mainSimulation.putCell(gridX, gridY);
+        mainSimulation.putCell(gridY, gridX);
     }else {
         for (int i = -1*BRUSH_SIZE; i <= BRUSH_SIZE; i++) {
             for (int j = -1*BRUSH_SIZE; j <= BRUSH_SIZE; j++) {
@@ -28,6 +29,7 @@ void mousePress(Simulation& mainSimulation) {
 
 }
 
+// Handles user input
 void update(Simulation& mainSimulation) {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
@@ -64,6 +66,7 @@ void update(Simulation& mainSimulation) {
     }
 }
 
+//The main loop drawing the game and starting the simulation
 int main() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         SDL_Log("SDL could not initialize! SDL_Error: %s", SDL_GetError());

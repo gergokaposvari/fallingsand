@@ -8,6 +8,8 @@
 
 class EdgeParticle : public Particle {
 public:
+
+    //A falak sima tömör részecskék
     explicit EdgeParticle() : Particle(SOLID) { }
 
     void display() const override { std::cout << "\033[31m-1\033[0m"; }

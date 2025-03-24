@@ -9,15 +9,16 @@
 class IceParticle : public SolidParticle {
 public:
 
-
+    // Sets temperature related things
     IceParticle(): SolidParticle() {
         setMeltingPoint(0);
-        Particle::setTemperature(-30);
+        Particle::setTemperature(-5);
     }
 
+    // Ice turns into water
     Particle* melt() override;
 
-
+    // Color of ice
     SDL_Color getColor() const override {
         return {173, 216, 230, 200};
     }
