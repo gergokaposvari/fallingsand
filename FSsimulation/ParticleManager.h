@@ -25,7 +25,7 @@ public:
     ParticleManager() {
         particleFactories.emplace_back([]() { return new StoneParticle(); });
         particleFactories.emplace_back([]() { return new WaterParticle(); });
-        particleFactories.emplace_back([]() { return new SandParticle(rand() % 4 == 0); });
+        particleFactories.emplace_back([]() { return new SandParticle(rand() % 16 == 0); });
         particleFactories.emplace_back([]()   { return new IceParticle(); });
         particleFactories.emplace_back([]() { return new LavaParticle(); });
     }

@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 std::pair<int, int> PowderParticle::nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) {
-    if (neighborhood[2][1]->getState() == State::EMPTY || neighborhood[2][1]->getState() == State::LIQUID) {
+    if (rand() % 2 == 0 && neighborhood[2][1]->getState() == State::EMPTY || neighborhood[2][1]->getState() == State::LIQUID) {
         return std::make_pair(1, 0);
     }
 

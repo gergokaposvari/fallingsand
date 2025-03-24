@@ -21,7 +21,7 @@ std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle 
     }
 
 
-    if (neighborhood[6][5]->getState() == EMPTY ||(neighborhood[6][5]->getState() == LIQUID && neighborhood[6][5]->getDensity() < density)) {
+    if (rand() % 2 ==0 && neighborhood[6][5]->getState() == EMPTY ||(neighborhood[6][5]->getState() == LIQUID && neighborhood[6][5]->getDensity() < density)) {
         return std::make_pair(1, 0);
     }
 
@@ -44,11 +44,19 @@ std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle 
                     neighborhood[5][5 + i]->getState() == LIQUID && neighborhood[5][5 + i]->getDensity() < density))) {
                 return std::make_pair(0, i);
             }
+            if (neighborhood[6][5 + i] != nullptr && (neighborhood[6][5 + i]->getState() == EMPTY || (
+                    neighborhood[6][5 + i]->getState() == LIQUID && neighborhood[6][5 + i]->getDensity() < density))) {
+                return std::make_pair(1, i);
+                    }
         }else {
             if (neighborhood[5][5-i] != nullptr && (neighborhood[5][5-i]->getState() == EMPTY || (
                     neighborhood[5][5-i]->getState() == LIQUID && neighborhood[5][5-i]->getDensity() < density))) {
                 return std::make_pair(0, -i);
             }
+            if (neighborhood[6][5-i] != nullptr && (neighborhood[6][5-i]->getState() == EMPTY || (
+                    neighborhood[6][5-i]->getState() == LIQUID && neighborhood[6][5-i]->getDensity() < density))) {
+                return std::make_pair(1, -i);
+                    }
         }
     }
 

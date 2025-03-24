@@ -31,7 +31,7 @@ public:
 
 
 
-    Simulation() : gen(std::random_device{}()), dist(0, 1) {
+    Simulation() : gen(std::random_device{}()), dist(0, 9) {
         for (int x = 0; x < rows; ++x) {
             for (int y = 0; y < cols; ++y) {
                 if (x == 0 || y == 0 || x == rows-1 || y == cols-1) {
@@ -109,13 +109,14 @@ public:
                 }
             }
         }
-        std::pair move = grid[x][y]->nextPosition(neighborhood, !(dist(gen) == 0));
+        std::pair move = grid[x][y]->nextPosition(neighborhood, (dist(gen) % 2 == 0));
 
 
         if (move != std::make_pair(2, 2)) {
             if (move == std::make_pair(3, 3)) {
                 grid[x][y] = grid[x][y]->freeze();
             }else {
+
                 Particle *temp = new Particle();
                 temp = grid[x][y];
                 grid[x][y] = grid[x+move.first][y+move.second];
@@ -123,6 +124,7 @@ public:
 
                 grid[x+move.first][y+move.second]->setTraversed(true);
                 movedParticles.push_back(grid[x+move.first][y+move.second]);
+
 
             }
         }
@@ -145,17 +147,19 @@ public:
     }
 
     void putCell(int x, int y) {
-
-        if (x > rows-1 || x <= 0 || y <= 0  || y > cols-1) {
-            return;
+        int place = 0;
+        if (particleManager.createNewParticle()->getState() == SOLID) {
+            place = 1;
+        } else {
+            place = 5;
         }
-        if(grid[x][y]->getState() == EMPTY) {
-
-
-            delete grid[x][y];
-            grid[x][y] = particleManager.createNewParticle();
-            grid[x][y]->setTraversed(true);
-            movedParticles.push_back(grid[x][y]);
+        if (dist(gen) % place == 0) {
+            if (x > rows-1 || x <= 0 || y <= 0  || y > cols-1) {
+                return;
+            }
+            if(grid[x][y]->getState() == EMPTY) {
+                grid[x][y] = particleManager.createNewParticle();
+            }
         }
     }
 };
