@@ -18,9 +18,7 @@ class WaterParticle : public LiquidParticle{
 
     void display() const override { std::cout << "\033[34m" << std::setw(2) << std::right << "2" << "\033[0m"; }
 
-    Particle* freeze() override {
-        return new IceParticle();
-    }
+    Particle* freeze() override;
 
     SDL_Color getColor() const override {
         return {0, 0, 255, 255};

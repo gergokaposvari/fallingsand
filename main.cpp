@@ -16,9 +16,13 @@ void mousePress(Simulation& mainSimulation) {
     int gridX = mouseX / CELL_SIZE;
     int gridY = mouseY / CELL_SIZE;
 
-    for (int i = -1*BRUSH_SIZE; i <= BRUSH_SIZE; i++) {
-        for (int j = -1*BRUSH_SIZE; j <= BRUSH_SIZE; j++) {
-            mainSimulation.putCell(gridY+i, gridX+j);
+    if (BRUSH_SIZE == 1) {
+        mainSimulation.putCell(gridX, gridY);
+    }else {
+        for (int i = -1*BRUSH_SIZE; i <= BRUSH_SIZE; i++) {
+            for (int j = -1*BRUSH_SIZE; j <= BRUSH_SIZE; j++) {
+                mainSimulation.putCell(gridY+i, gridX+j);
+            }
         }
     }
 

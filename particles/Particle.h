@@ -14,7 +14,7 @@ class Particle {
 
     int temperature;
 
-    int neighborhoodSize = 1;
+    int neighborhoodSize = 3;
 
 
 public:
@@ -49,6 +49,10 @@ public:
 
 
     virtual Particle* freeze() {
+        return new Particle();
+    }
+
+    virtual Particle* melt() {
         return new Particle();
     }
 

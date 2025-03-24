@@ -23,7 +23,11 @@ add_executable(FallingSand main.cpp
         particles/types/solids/StoneParticle.h
         FSsimulation/ParticleManager.h
         particles/types/solids/IceParticle.h
-        particles/types/liquids/LavaParticle.h)
+        particles/types/liquids/LavaParticle.h
+        particles/types/solids/StoneParticle.cpp
+        particles/types/liquids/LavaParticle.cpp
+        particles/types/liquids/WaterParticle.cpp
+        particles/types/solids/IceParticle.cpp)
 
 # Include SDL2 headers
 target_include_directories(FallingSand PRIVATE ${SDL2_INCLUDE_DIRS})

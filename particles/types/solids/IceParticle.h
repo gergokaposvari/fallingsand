@@ -15,6 +15,9 @@ public:
         Particle::setTemperature(-30);
     }
 
+    Particle* melt() override;
+
+
     SDL_Color getColor() const override {
         return {173, 216, 230, 200};
     }

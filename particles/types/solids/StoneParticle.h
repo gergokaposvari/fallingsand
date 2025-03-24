@@ -4,15 +4,22 @@
 
 #ifndef STONEPARTICLE_H
 #define STONEPARTICLE_H
+
+
 #include "../SolidParticle.h"
 
+class LavaParticle;
+
+
 class StoneParticle : public SolidParticle {
-    public:
+public:
 
     StoneParticle() : SolidParticle() {
         setMeltingPoint(200);
         Particle::setTemperature(20);
     }
+
+    Particle* melt() override;
 
     void display() const override { std::cout << "\033[37m" << std::setw(2) << std::right << "3" << "\033[0m"; }
     SDL_Color getColor() const override {

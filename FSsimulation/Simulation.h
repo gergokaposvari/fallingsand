@@ -115,8 +115,9 @@ public:
         if (move != std::make_pair(2, 2)) {
             if (move == std::make_pair(3, 3)) {
                 grid[x][y] = grid[x][y]->freeze();
+            }else if (move == std::make_pair(4, 4)) {
+                grid[x][y] = grid[x][y]->melt();
             }else {
-
                 Particle *temp = new Particle();
                 temp = grid[x][y];
                 grid[x][y] = grid[x+move.first][y+move.second];

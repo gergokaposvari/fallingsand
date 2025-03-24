@@ -4,26 +4,25 @@
 
 #ifndef LAVAPARTICLE_H
 #define LAVAPARTICLE_H
-#include "../solids/StoneParticle.h"
 #include "../LiquidParticle.h"
+
+class StoneParticle;
 
 class LavaParticle : public LiquidParticle{
 public:
     int color;
 
     LavaParticle() : LiquidParticle() {
-        setFreezingPoint(20);
+        setFreezingPoint(200);
         setBoilingPoint(20000000);
-        Particle::setTemperature(600);
+        Particle::setTemperature(440);
         LiquidParticle::setDensity(3100);
         color = rand() % 5;
     };
 
     void display() const override { std::cout << "\033[34m" << std::setw(2) << std::right << "2" << "\033[0m"; }
 
-    Particle* freeze() override {
-        return new StoneParticle();
-    }
+    Particle* freeze() override;
 
     SDL_Color getColor() const override {
         static const SDL_Color colors[] = {
