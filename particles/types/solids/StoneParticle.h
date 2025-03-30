@@ -13,8 +13,8 @@ public:
 
     // Sets temperature related things
     StoneParticle() : SolidParticle() {
-        setMeltingPoint(950);
-        Particle::setTemperature(40);
+        setMeltingPoint(480);
+        Particle::setTemperature(65);
     }
 
     // Stone turns into lava

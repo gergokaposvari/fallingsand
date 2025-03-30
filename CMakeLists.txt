@@ -3,8 +3,18 @@ project(FallingSand)
 
 set(CMAKE_CXX_STANDARD 26)
 
+set(BOOST_ROOT "/opt/homebrew/Cellar/boost")
+set(BOOST_INCLUDEDIR "/opt/homebrew/Cellar/boost/include")
+set(BOOST_LIBRARYDIR "/opt/homebrew/Cellar/boost/lib")
+
+find_package(Boost REQUIRED)
+
 # Find SDL2
 find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+
+
 
 add_executable(FallingSand main.cpp
         particles/Particle.h
@@ -30,6 +40,11 @@ add_executable(FallingSand main.cpp
 
 # Include SDL2 headers
 target_include_directories(FallingSand PRIVATE ${SDL2_INCLUDE_DIRS})
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
+
+target_link_libraries(FallingSand PRIVATE ${Boost_LIBRARIES})
+
 
 # Link SDL2 library
-target_link_libraries(FallingSand PRIVATE ${SDL2_LIBRARIES})
+target_link_libraries(FallingSand PRIVATE SDL2::SDL2 SDL2_ttf::SDL2_ttf)

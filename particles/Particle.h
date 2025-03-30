@@ -17,7 +17,7 @@ class Particle {
 
     // Temp of the particle
     int temperature;
-
+protected:
     // The size of the neighborhood which is looked at when asking the particle to move
     int neighborhoodSize = 1;
 
@@ -64,7 +64,7 @@ public:
 
     // Given the current neighborhood the particle determines where to move next,
     // direction is used to decide left or right, it is generated randomly in simulation.h
-    virtual std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) { return {2,2}; }
+    virtual std::pair<int, int> nextPosition(std::array<std::array<Particle *, 15>, 15> &neighborhood, bool direction) { return {2,2}; }
 };
 
 #endif // PARTICLE_H

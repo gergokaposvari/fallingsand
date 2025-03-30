@@ -18,7 +18,7 @@ public:
     void setMeltingPoint(int meltingPoint) { this->meltingPoint = meltingPoint; }
     int getMeltingPoint() { return this->meltingPoint; }
 
-    std::pair<int, int> nextPosition(std::array<std::array<Particle *, 11>, 11> &neighborhood, bool direction) override {
+    std::pair<int, int> nextPosition(std::array<std::array<Particle *, 15>, 15> &neighborhood, bool direction) override {
 
 
         // !!! Neighborhood is indexed absolutely in the 11x11 grid, the return value is given as where
@@ -37,7 +37,7 @@ public:
         }
         avgTemp /= countedParticles;
         if (avgTemp > this->getMeltingPoint()) {
-
+            this->setTemperature(avgTemp);
             // (4,4) signals melting
             return std::make_pair(4, 4);
         }

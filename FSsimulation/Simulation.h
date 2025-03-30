@@ -4,6 +4,8 @@
 #include <SDL_render.h>
 #include <__random/random_device.h>
 
+
+
 #include "ParticleManager.h"
 #include "../particles/EdgeParticle.h"
 #include "../particles/Particle.h"
@@ -91,7 +93,7 @@ public:
         int size = grid[x][y]->getNeighborhoodSize();
         int radius = size / 2;
 
-        constexpr int MAX_SIZE = 11;
+        constexpr int MAX_SIZE = 15;
         std::array<std::array<Particle*, MAX_SIZE>, MAX_SIZE> neighborhood;
         if (size > MAX_SIZE) size = MAX_SIZE;
 
@@ -160,6 +162,14 @@ public:
             }
             if(grid[x][y]->getState() == EMPTY) {
                 grid[x][y] = particleManager.createNewParticle();
+            }
+        }
+    }
+
+    void testPerf() {
+        for ( int i = 1; i < cols-1; i++) {
+            for (int j = 1; j < 100; j++) {
+                grid[j][i] = new WaterParticle();
             }
         }
     }

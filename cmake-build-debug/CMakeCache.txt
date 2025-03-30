@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=/opt/homebrew/lib/cmake/Boost-1.87.0
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -230,6 +233,12 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
 
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/opt/homebrew/lib/cmake/SDL2
+
+//The directory containing a CMake configuration file for SDL2_ttf.
+SDL2_ttf_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_ttf
+
+//The directory containing a CMake configuration file for boost_headers.
+boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.87.0
 
 //Path to a library.
 pkgcfg_lib_SDL2GFX_SDL2:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
@@ -540,6 +549,8 @@ __pkg_config_checked_SDL2:INTERNAL=1
 __pkg_config_checked_SDL2GFX:INTERNAL=1
 __pkg_config_checked_SDL2IMAGE:INTERNAL=1
 __pkg_config_checked_SDL2TTF:INTERNAL=1
+//ADVANCED property for variable: boost_headers_DIR
+boost_headers_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_SDL2GFX_SDL2
 pkgcfg_lib_SDL2GFX_SDL2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_SDL2GFX_SDL2_gfx

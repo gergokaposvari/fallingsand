@@ -12,7 +12,8 @@
 		[
 			"add_executable",
 			"target_link_libraries",
-			"target_include_directories"
+			"target_include_directories",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -26,19 +27,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 9,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 35,
+				"line" : 50,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 32,
+				"line" : 42,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 43,
 				"parent" : 0
 			}
 		]
@@ -59,9 +66,18 @@
 					"path" : "/opt/homebrew/Cellar/sdl2/2.32.2/include"
 				},
 				{
+					"backtrace" : 4,
+					"path" : "/opt/homebrew/include"
+				},
+				{
 					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/opt/homebrew/Cellar/sdl2/2.32.2/include/SDL2"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/opt/homebrew/Cellar/sdl2_ttf/2.24.0/include/SDL2"
 				}
 			],
 			"language" : "CXX",
@@ -111,6 +127,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "/opt/homebrew/Cellar/sdl2/2.32.2/lib/libSDL2.dylib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib",
 				"role" : "libraries"
 			}
 		],

@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL_ttf.h>
 #include "FSsimulation/Simulation.h"
 
 const int WINDOW_WIDTH = 800;
@@ -59,6 +60,8 @@ void update(Simulation& mainSimulation) {
                     }
                 }else if (e.key.keysym.sym == SDLK_p) {
                     mainSimulation.switchActive();
+                }else if (e.key.keysym.sym == SDLK_t) {
+                    mainSimulation.testPerf();
                 }
 
                 break;
@@ -66,10 +69,45 @@ void update(Simulation& mainSimulation) {
     }
 }
 
+// Function to render the FPS counter
+void renderFPS(SDL_Renderer* renderer, TTF_Font* font, int fps) {
+    SDL_Color color = {255, 255, 255, 255}; // White color
+    char fpsText[16];
+    snprintf(fpsText, sizeof(fpsText), "FPS: %d", fps);
+
+    SDL_Surface* surface = TTF_RenderText_Solid(font, fpsText, color);
+    if (!surface) return;
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    if (!texture) return;
+
+    int textW, textH;
+    SDL_QueryTexture(texture, NULL, NULL, &textW, &textH);
+    SDL_Rect destRect = {WINDOW_WIDTH - textW - 10, 10, textW, textH};
+
+    SDL_RenderCopy(renderer, texture, NULL, &destRect);
+    SDL_DestroyTexture(texture);
+}
+
 //The main loop drawing the game and starting the simulation
 int main() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         SDL_Log("SDL could not initialize! SDL_Error: %s", SDL_GetError());
+        return -1;
+    }
+
+    if (TTF_Init() == -1) {
+        SDL_Log("TTF could not initialize! TTF_Error: %s", TTF_GetError());
+        SDL_Quit();
+        return -1;
+    }
+
+    TTF_Font* font = TTF_OpenFont("/System/Library/Fonts/Supplemental/Arial.ttf", 16);
+    if (!font) {
+        SDL_Log("Failed to load font! TTF_Error: %s", TTF_GetError());
+        TTF_Quit();
+        SDL_Quit();
         return -1;
     }
 
@@ -97,26 +135,33 @@ int main() {
     Uint32 frameStart;
     const int FRAME_DELAY = 1000 / 60;
     int simulateEveryXFrames = 0;
+    int frameCount = 0;
+    Uint32 lastTime = SDL_GetTicks();
 
     while (running) {
         frameStart = SDL_GetTicks();
+        frameCount++;
+
+        Uint32 elapsed = frameStart - lastTime;
+        int fps = (elapsed > 0) ? (frameCount * 1000) / elapsed : 0;
+        if (elapsed > 1000) { // Update FPS every second
+            frameCount = 0;
+            lastTime = frameStart;
+        }
 
         update(mainSimulation);
-
         if (placing) {
             mousePress(mainSimulation);
         }
-
         if (!running) break;
 
-        //if ( simulateEveryXFrames % 2 == 0){
-            mainSimulation.simulateTurn();
-        //}
+        mainSimulation.simulateTurn();
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
         mainSimulation.render(renderer, CELL_SIZE);
+        renderFPS(renderer, font, fps);
 
         SDL_RenderPresent(renderer);
 
@@ -127,12 +172,11 @@ int main() {
         }
     }
 
+    TTF_CloseFont(font);
+    TTF_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 
     return 0;
 }
-
-
-
