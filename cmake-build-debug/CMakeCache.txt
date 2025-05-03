@@ -15,7 +15,7 @@
 ########################
 
 //The directory containing a CMake configuration file for Boost.
-Boost_DIR:PATH=/opt/homebrew/lib/cmake/Boost-1.87.0
+Boost_DIR:PATH=/opt/homebrew/lib/cmake/Boost-1.88.0
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
@@ -136,11 +136,11 @@ CMAKE_OSX_ARCHITECTURES:STRING=
 
 //Minimum OS X version to target for deployment (at runtime); newer
 // APIs weak linked. Set to empty string for default value.
-CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
+CMAKE_OSX_DEPLOYMENT_TARGET:STRING=15.3
 
 //The product will be built against the headers and libraries located
 // inside the indicated SDK.
-CMAKE_OSX_SYSROOT:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk
+CMAKE_OSX_SYSROOT:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -225,12 +225,6 @@ FallingSand_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 FallingSand_SOURCE_DIR:STATIC=/Users/kaposvarigergo/CLionProjects/FallingSand
 
-//Arguments to supply to pkg-config
-PKG_CONFIG_ARGN:STRING=
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
-
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/opt/homebrew/lib/cmake/SDL2
 
@@ -238,28 +232,7 @@ SDL2_DIR:PATH=/opt/homebrew/lib/cmake/SDL2
 SDL2_ttf_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_ttf
 
 //The directory containing a CMake configuration file for boost_headers.
-boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.87.0
-
-//Path to a library.
-pkgcfg_lib_SDL2GFX_SDL2:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2GFX_SDL2_gfx:FILEPATH=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib/libSDL2_gfx.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2IMAGE_SDL2:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2IMAGE_SDL2_image:FILEPATH=/opt/homebrew/Cellar/sdl2_image/2.8.5/lib/libSDL2_image.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2TTF_SDL2:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2TTF_SDL2_ttf:FILEPATH=/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib
-
-//Path to a library.
-pkgcfg_lib_SDL2_SDL2:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
+boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.88.0
 
 
 ########################
@@ -399,171 +372,6 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding PkgConfig
-FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/opt/homebrew/bin/pkg-config][v2.3.0()]
-//ADVANCED property for variable: PKG_CONFIG_ARGN
-PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-SDL2GFX_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include/SDL2;-I/opt/homebrew/include;-I/opt/homebrew/include/SDL2;-D_THREAD_SAFE
-SDL2GFX_CFLAGS_I:INTERNAL=
-SDL2GFX_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2GFX_FOUND:INTERNAL=1
-SDL2GFX_INCLUDEDIR:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include
-SDL2GFX_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include/SDL2;/opt/homebrew/include;/opt/homebrew/include/SDL2
-SDL2GFX_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib;-lSDL2_gfx;-L/opt/homebrew/lib;-lSDL2
-SDL2GFX_LDFLAGS_OTHER:INTERNAL=
-SDL2GFX_LIBDIR:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib
-SDL2GFX_LIBRARIES:INTERNAL=SDL2_gfx;SDL2
-SDL2GFX_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib;/opt/homebrew/lib
-SDL2GFX_LIBS:INTERNAL=
-SDL2GFX_LIBS_L:INTERNAL=
-SDL2GFX_LIBS_OTHER:INTERNAL=
-SDL2GFX_LIBS_PATHS:INTERNAL=
-SDL2GFX_MODULE_NAME:INTERNAL=SDL2_gfx
-SDL2GFX_PREFIX:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4
-SDL2GFX_SDL2_gfx_INCLUDEDIR:INTERNAL=
-SDL2GFX_SDL2_gfx_LIBDIR:INTERNAL=
-SDL2GFX_SDL2_gfx_PREFIX:INTERNAL=
-SDL2GFX_SDL2_gfx_VERSION:INTERNAL=
-SDL2GFX_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include/SDL2;-I/opt/homebrew/include;-I/opt/homebrew/include/SDL2;-D_THREAD_SAFE
-SDL2GFX_STATIC_CFLAGS_I:INTERNAL=
-SDL2GFX_STATIC_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2GFX_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include/SDL2;/opt/homebrew/include;/opt/homebrew/include/SDL2
-SDL2GFX_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib;-lSDL2_gfx;-L/opt/homebrew/lib;-lSDL2;-lm;-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-lobjc;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal
-SDL2GFX_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal
-SDL2GFX_STATIC_LIBDIR:INTERNAL=
-SDL2GFX_STATIC_LIBRARIES:INTERNAL=SDL2_gfx;SDL2;m;objc
-SDL2GFX_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib;/opt/homebrew/lib
-SDL2GFX_STATIC_LIBS:INTERNAL=
-SDL2GFX_STATIC_LIBS_L:INTERNAL=
-SDL2GFX_STATIC_LIBS_OTHER:INTERNAL=
-SDL2GFX_STATIC_LIBS_PATHS:INTERNAL=
-SDL2GFX_VERSION:INTERNAL=1.0.2
-SDL2IMAGE_CFLAGS:INTERNAL=-I/opt/homebrew/include/SDL2;-I/opt/homebrew/include;-D_THREAD_SAFE;-I/opt/homebrew/opt/libpng/include/libpng16;-I/opt/homebrew/opt/jpeg-xl/include;-I/opt/homebrew/Cellar/highway/1.2.0/include;-DHWY_SHARED_DEFINE;-I/opt/homebrew/Cellar/brotli/1.1.0/include;-I/opt/homebrew/opt/little-cms2/include;-I/opt/homebrew/Cellar/libtiff/4.7.0/include;-I/opt/homebrew/opt/zstd/include;-I/opt/homebrew/Cellar/xz/5.6.4/include;-I/opt/homebrew/opt/jpeg-turbo/include;-I/opt/homebrew/Cellar/libavif/1.1.1/include;-DAVIF_DLL;-I/opt/homebrew/Cellar/aom/3.12.0/include;-I/opt/homebrew/Cellar/libvmaf/3.0.0/include;-I/opt/homebrew/Cellar/libvmaf/3.0.0/include/libvmaf;-I/opt/homebrew/opt/webp/include;-I/opt/homebrew/opt/webp/include/webp
-SDL2IMAGE_CFLAGS_I:INTERNAL=
-SDL2IMAGE_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE;-DHWY_SHARED_DEFINE;-DAVIF_DLL
-SDL2IMAGE_FOUND:INTERNAL=1
-SDL2IMAGE_INCLUDEDIR:INTERNAL=/opt/homebrew/include
-SDL2IMAGE_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include/SDL2;/opt/homebrew/include;/opt/homebrew/opt/libpng/include/libpng16;/opt/homebrew/opt/jpeg-xl/include;/opt/homebrew/Cellar/highway/1.2.0/include;/opt/homebrew/Cellar/brotli/1.1.0/include;/opt/homebrew/opt/little-cms2/include;/opt/homebrew/Cellar/libtiff/4.7.0/include;/opt/homebrew/opt/zstd/include;/opt/homebrew/Cellar/xz/5.6.4/include;/opt/homebrew/opt/jpeg-turbo/include;/opt/homebrew/Cellar/libavif/1.1.1/include;/opt/homebrew/Cellar/aom/3.12.0/include;/opt/homebrew/Cellar/libvmaf/3.0.0/include;/opt/homebrew/Cellar/libvmaf/3.0.0/include/libvmaf;/opt/homebrew/opt/webp/include;/opt/homebrew/opt/webp/include/webp
-SDL2IMAGE_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_image/2.8.5/lib;-lSDL2_image;-L/opt/homebrew/lib;-lSDL2
-SDL2IMAGE_LDFLAGS_OTHER:INTERNAL=
-SDL2IMAGE_LIBDIR:INTERNAL=/opt/homebrew/Cellar/sdl2_image/2.8.5/lib
-SDL2IMAGE_LIBRARIES:INTERNAL=SDL2_image;SDL2
-SDL2IMAGE_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_image/2.8.5/lib;/opt/homebrew/lib
-SDL2IMAGE_LIBS:INTERNAL=
-SDL2IMAGE_LIBS_L:INTERNAL=
-SDL2IMAGE_LIBS_OTHER:INTERNAL=
-SDL2IMAGE_LIBS_PATHS:INTERNAL=
-SDL2IMAGE_MODULE_NAME:INTERNAL=SDL2_image
-SDL2IMAGE_PREFIX:INTERNAL=/opt/homebrew
-SDL2IMAGE_SDL2_image_INCLUDEDIR:INTERNAL=
-SDL2IMAGE_SDL2_image_LIBDIR:INTERNAL=
-SDL2IMAGE_SDL2_image_PREFIX:INTERNAL=
-SDL2IMAGE_SDL2_image_VERSION:INTERNAL=
-SDL2IMAGE_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/include/SDL2;-I/opt/homebrew/include;-D_THREAD_SAFE;-I/opt/homebrew/opt/libpng/include/libpng16;-I/opt/homebrew/opt/jpeg-xl/include;-I/opt/homebrew/Cellar/highway/1.2.0/include;-DHWY_SHARED_DEFINE;-I/opt/homebrew/Cellar/brotli/1.1.0/include;-I/opt/homebrew/opt/little-cms2/include;-I/opt/homebrew/Cellar/libtiff/4.7.0/include;-I/opt/homebrew/opt/zstd/include;-I/opt/homebrew/Cellar/xz/5.6.4/include;-I/opt/homebrew/opt/jpeg-turbo/include;-I/opt/homebrew/Cellar/libavif/1.1.1/include;-DAVIF_DLL;-I/opt/homebrew/Cellar/aom/3.12.0/include;-I/opt/homebrew/Cellar/libvmaf/3.0.0/include;-I/opt/homebrew/Cellar/libvmaf/3.0.0/include/libvmaf;-I/opt/homebrew/opt/webp/include;-I/opt/homebrew/opt/webp/include/webp;-DJXL_STATIC_DEFINE;-DJXL_CMS_STATIC_DEFINE;-DLZMA_API_STATIC;-UAVIF_DLL
-SDL2IMAGE_STATIC_CFLAGS_I:INTERNAL=
-SDL2IMAGE_STATIC_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE;-DHWY_SHARED_DEFINE;-DAVIF_DLL;-DJXL_STATIC_DEFINE;-DJXL_CMS_STATIC_DEFINE;-DLZMA_API_STATIC;-UAVIF_DLL
-SDL2IMAGE_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include/SDL2;/opt/homebrew/include;/opt/homebrew/opt/libpng/include/libpng16;/opt/homebrew/opt/jpeg-xl/include;/opt/homebrew/Cellar/highway/1.2.0/include;/opt/homebrew/Cellar/brotli/1.1.0/include;/opt/homebrew/opt/little-cms2/include;/opt/homebrew/Cellar/libtiff/4.7.0/include;/opt/homebrew/opt/zstd/include;/opt/homebrew/Cellar/xz/5.6.4/include;/opt/homebrew/opt/jpeg-turbo/include;/opt/homebrew/Cellar/libavif/1.1.1/include;/opt/homebrew/Cellar/aom/3.12.0/include;/opt/homebrew/Cellar/libvmaf/3.0.0/include;/opt/homebrew/Cellar/libvmaf/3.0.0/include/libvmaf;/opt/homebrew/opt/webp/include;/opt/homebrew/opt/webp/include/webp
-SDL2IMAGE_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_image/2.8.5/lib;-lSDL2_image;-L/opt/homebrew/lib;-lSDL2;-lm;-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-lobjc;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal;-L/opt/homebrew/opt/libpng/lib;-lpng16;-lz;-L/opt/homebrew/opt/jpeg-xl/lib;-ljxl;-lm;-lc++;-L/opt/homebrew/Cellar/highway/1.2.0/lib;-lhwy;-L/opt/homebrew/Cellar/brotli/1.1.0/lib;-lbrotlienc;-lbrotlidec;-lbrotlicommon;-ljxl_cms;-lm;-lc++;-L/opt/homebrew/opt/little-cms2/lib;-llcms2;-lm;-lpthread;-L/opt/homebrew/Cellar/libtiff/4.7.0/lib;-ltiff;-L/opt/homebrew/opt/zstd/lib;-lzstd;-L/opt/homebrew/Cellar/xz/5.6.4/lib;-llzma;-pthread;-lpthread;-L/opt/homebrew/opt/jpeg-turbo/lib;-ljpeg;-L/usr/lib;-lz;-L/opt/homebrew/Cellar/libavif/1.1.1/lib;-lavif;-L/opt/homebrew/Cellar/aom/3.12.0/lib;-laom;-L/opt/homebrew/Cellar/libvmaf/3.0.0/lib;-lvmaf;-lm;-L/opt/homebrew/opt/webp/lib;-lwebpdemux;-lwebp;-lsharpyuv
-SDL2IMAGE_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal;-pthread
-SDL2IMAGE_STATIC_LIBDIR:INTERNAL=
-SDL2IMAGE_STATIC_LIBRARIES:INTERNAL=SDL2_image;SDL2;m;objc;png16;z;jxl;m;c++;hwy;brotlienc;brotlidec;brotlicommon;jxl_cms;m;c++;lcms2;m;pthread;tiff;zstd;lzma;pthread;jpeg;z;avif;aom;vmaf;m;webpdemux;webp;sharpyuv
-SDL2IMAGE_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_image/2.8.5/lib;/opt/homebrew/lib;/opt/homebrew/opt/libpng/lib;/opt/homebrew/opt/jpeg-xl/lib;/opt/homebrew/Cellar/highway/1.2.0/lib;/opt/homebrew/Cellar/brotli/1.1.0/lib;/opt/homebrew/opt/little-cms2/lib;/opt/homebrew/Cellar/libtiff/4.7.0/lib;/opt/homebrew/opt/zstd/lib;/opt/homebrew/Cellar/xz/5.6.4/lib;/opt/homebrew/opt/jpeg-turbo/lib;/usr/lib;/opt/homebrew/Cellar/libavif/1.1.1/lib;/opt/homebrew/Cellar/aom/3.12.0/lib;/opt/homebrew/Cellar/libvmaf/3.0.0/lib;/opt/homebrew/opt/webp/lib
-SDL2IMAGE_STATIC_LIBS:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_L:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_OTHER:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_PATHS:INTERNAL=
-SDL2IMAGE_VERSION:INTERNAL=2.8.5
-SDL2TTF_CFLAGS:INTERNAL=-I/opt/homebrew/include/SDL2;-I/opt/homebrew/include;-D_THREAD_SAFE;-I/opt/homebrew/Cellar/harfbuzz/10.3.0/include/harfbuzz;-I/opt/homebrew/Cellar/glib/2.82.4/include/glib-2.0;-I/opt/homebrew/Cellar/glib/2.82.4/lib/glib-2.0/include;-I/opt/homebrew/opt/gettext/include;-I/opt/homebrew/Cellar/pcre2/10.44/include;-I/opt/homebrew/Cellar/graphite2/1.3.14/include;-I/opt/homebrew/opt/freetype/include/freetype2;-I/opt/homebrew/opt/libpng/include/libpng16
-SDL2TTF_CFLAGS_I:INTERNAL=
-SDL2TTF_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2TTF_FOUND:INTERNAL=1
-SDL2TTF_INCLUDEDIR:INTERNAL=/opt/homebrew/include
-SDL2TTF_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include/SDL2;/opt/homebrew/include;/opt/homebrew/Cellar/harfbuzz/10.3.0/include/harfbuzz;/opt/homebrew/Cellar/glib/2.82.4/include/glib-2.0;/opt/homebrew/Cellar/glib/2.82.4/lib/glib-2.0/include;/opt/homebrew/opt/gettext/include;/opt/homebrew/Cellar/pcre2/10.44/include;/opt/homebrew/Cellar/graphite2/1.3.14/include;/opt/homebrew/opt/freetype/include/freetype2;/opt/homebrew/opt/libpng/include/libpng16
-SDL2TTF_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib;-lSDL2_ttf;-L/opt/homebrew/lib;-lSDL2
-SDL2TTF_LDFLAGS_OTHER:INTERNAL=
-SDL2TTF_LIBDIR:INTERNAL=/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib
-SDL2TTF_LIBRARIES:INTERNAL=SDL2_ttf;SDL2
-SDL2TTF_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib;/opt/homebrew/lib
-SDL2TTF_LIBS:INTERNAL=
-SDL2TTF_LIBS_L:INTERNAL=
-SDL2TTF_LIBS_OTHER:INTERNAL=
-SDL2TTF_LIBS_PATHS:INTERNAL=
-SDL2TTF_MODULE_NAME:INTERNAL=SDL2_ttf
-SDL2TTF_PREFIX:INTERNAL=/opt/homebrew
-SDL2TTF_SDL2_ttf_INCLUDEDIR:INTERNAL=
-SDL2TTF_SDL2_ttf_LIBDIR:INTERNAL=
-SDL2TTF_SDL2_ttf_PREFIX:INTERNAL=
-SDL2TTF_SDL2_ttf_VERSION:INTERNAL=
-SDL2TTF_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/include/SDL2;-I/opt/homebrew/include;-D_THREAD_SAFE;-I/opt/homebrew/Cellar/harfbuzz/10.3.0/include/harfbuzz;-I/opt/homebrew/Cellar/glib/2.82.4/include/glib-2.0;-I/opt/homebrew/Cellar/glib/2.82.4/lib/glib-2.0/include;-I/opt/homebrew/opt/gettext/include;-I/opt/homebrew/Cellar/pcre2/10.44/include;-I/opt/homebrew/Cellar/graphite2/1.3.14/include;-I/opt/homebrew/opt/freetype/include/freetype2;-I/opt/homebrew/opt/libpng/include/libpng16
-SDL2TTF_STATIC_CFLAGS_I:INTERNAL=
-SDL2TTF_STATIC_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2TTF_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include/SDL2;/opt/homebrew/include;/opt/homebrew/Cellar/harfbuzz/10.3.0/include/harfbuzz;/opt/homebrew/Cellar/glib/2.82.4/include/glib-2.0;/opt/homebrew/Cellar/glib/2.82.4/lib/glib-2.0/include;/opt/homebrew/opt/gettext/include;/opt/homebrew/Cellar/pcre2/10.44/include;/opt/homebrew/Cellar/graphite2/1.3.14/include;/opt/homebrew/opt/freetype/include/freetype2;/opt/homebrew/opt/libpng/include/libpng16
-SDL2TTF_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib;-lSDL2_ttf;-L/opt/homebrew/lib;-lSDL2;-lm;-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-lobjc;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal;-L/opt/homebrew/Cellar/harfbuzz/10.3.0/lib;-lharfbuzz;-lm;-framework;ApplicationServices;-L/opt/homebrew/Cellar/glib/2.82.4/lib;-lglib-2.0;-L/opt/homebrew/opt/gettext/lib;-lintl;-liconv;-lm;-framework;Foundation;-framework;CoreFoundation;-framework;AppKit;-framework;Carbon;-L/opt/homebrew/Cellar/pcre2/10.44/lib;-lpcre2-8;-D_THREAD_SAFE;-pthread;-L/opt/homebrew/Cellar/graphite2/1.3.14/lib;-lgraphite2;-L/opt/homebrew/opt/freetype/lib;-lfreetype;-lbz2;-L/opt/homebrew/opt/libpng/lib;-lpng16;-L/usr/lib;-lz
-SDL2TTF_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal;-framework;ApplicationServices;-framework;Foundation;-framework;CoreFoundation;-framework;AppKit;-framework;Carbon;-D_THREAD_SAFE;-pthread
-SDL2TTF_STATIC_LIBDIR:INTERNAL=
-SDL2TTF_STATIC_LIBRARIES:INTERNAL=SDL2_ttf;SDL2;m;objc;harfbuzz;m;glib-2.0;intl;iconv;m;pcre2-8;graphite2;freetype;bz2;png16;z
-SDL2TTF_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib;/opt/homebrew/lib;/opt/homebrew/Cellar/harfbuzz/10.3.0/lib;/opt/homebrew/Cellar/glib/2.82.4/lib;/opt/homebrew/opt/gettext/lib;/opt/homebrew/Cellar/pcre2/10.44/lib;/opt/homebrew/Cellar/graphite2/1.3.14/lib;/opt/homebrew/opt/freetype/lib;/opt/homebrew/opt/libpng/lib;/usr/lib
-SDL2TTF_STATIC_LIBS:INTERNAL=
-SDL2TTF_STATIC_LIBS_L:INTERNAL=
-SDL2TTF_STATIC_LIBS_OTHER:INTERNAL=
-SDL2TTF_STATIC_LIBS_PATHS:INTERNAL=
-SDL2TTF_VERSION:INTERNAL=2.24.0
-SDL2_CFLAGS:INTERNAL=-I/opt/homebrew/include;-I/opt/homebrew/include/SDL2;-D_THREAD_SAFE
-SDL2_CFLAGS_I:INTERNAL=
-SDL2_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2_FOUND:INTERNAL=1
-SDL2_INCLUDEDIR:INTERNAL=/opt/homebrew/include
-SDL2_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include;/opt/homebrew/include/SDL2
-SDL2_LDFLAGS:INTERNAL=-L/opt/homebrew/lib;-lSDL2
-SDL2_LDFLAGS_OTHER:INTERNAL=
-SDL2_LIBDIR:INTERNAL=/opt/homebrew/lib
-SDL2_LIBRARIES:INTERNAL=SDL2
-SDL2_LIBRARY_DIRS:INTERNAL=/opt/homebrew/lib
-SDL2_LIBS:INTERNAL=
-SDL2_LIBS_L:INTERNAL=
-SDL2_LIBS_OTHER:INTERNAL=
-SDL2_LIBS_PATHS:INTERNAL=
-SDL2_MODULE_NAME:INTERNAL=sdl2
-SDL2_PREFIX:INTERNAL=/opt/homebrew
-SDL2_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/include;-I/opt/homebrew/include/SDL2;-D_THREAD_SAFE
-SDL2_STATIC_CFLAGS_I:INTERNAL=
-SDL2_STATIC_CFLAGS_OTHER:INTERNAL=-D_THREAD_SAFE
-SDL2_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/include;/opt/homebrew/include/SDL2
-SDL2_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/lib;-lSDL2;-lm;-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-lobjc;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal
-SDL2_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-framework,CoreAudio;-Wl,-framework,AudioToolbox;-Wl,-weak_framework,CoreHaptics;-Wl,-weak_framework,GameController;-Wl,-framework,ForceFeedback;-Wl,-framework,CoreVideo;-Wl,-framework,Cocoa;-Wl,-framework,Carbon;-Wl,-framework,IOKit;-Wl,-weak_framework,QuartzCore;-Wl,-weak_framework,Metal
-SDL2_STATIC_LIBDIR:INTERNAL=
-SDL2_STATIC_LIBRARIES:INTERNAL=SDL2;m;objc
-SDL2_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/lib
-SDL2_STATIC_LIBS:INTERNAL=
-SDL2_STATIC_LIBS_L:INTERNAL=
-SDL2_STATIC_LIBS_OTHER:INTERNAL=
-SDL2_STATIC_LIBS_PATHS:INTERNAL=
-SDL2_VERSION:INTERNAL=2.32.0
-SDL2_sdl2_INCLUDEDIR:INTERNAL=
-SDL2_sdl2_LIBDIR:INTERNAL=
-SDL2_sdl2_PREFIX:INTERNAL=
-SDL2_sdl2_VERSION:INTERNAL=
-__pkg_config_checked_SDL2:INTERNAL=1
-__pkg_config_checked_SDL2GFX:INTERNAL=1
-__pkg_config_checked_SDL2IMAGE:INTERNAL=1
-__pkg_config_checked_SDL2TTF:INTERNAL=1
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2GFX_SDL2
-pkgcfg_lib_SDL2GFX_SDL2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2GFX_SDL2_gfx
-pkgcfg_lib_SDL2GFX_SDL2_gfx-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2IMAGE_SDL2
-pkgcfg_lib_SDL2IMAGE_SDL2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2IMAGE_SDL2_image
-pkgcfg_lib_SDL2IMAGE_SDL2_image-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2TTF_SDL2
-pkgcfg_lib_SDL2TTF_SDL2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2TTF_SDL2_ttf
-pkgcfg_lib_SDL2TTF_SDL2_ttf-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2_SDL2
-pkgcfg_lib_SDL2_SDL2-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/opt/homebrew/Cellar/sdl2_image/2.8.5/lib
 

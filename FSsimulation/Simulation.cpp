@@ -4,3 +4,5 @@
 
 #include "Simulation.h"
 
+const int Simulation::rows;
+const int Simulation::cols;

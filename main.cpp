@@ -5,7 +5,7 @@
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 800;
-const int CELL_SIZE = 4;
+const int CELL_SIZE = 2;
 bool running = true;
 bool placing = false;
 int BRUSH_SIZE = 5;
@@ -144,9 +144,10 @@ int main() {
 
         Uint32 elapsed = frameStart - lastTime;
         int fps = (elapsed > 0) ? (frameCount * 1000) / elapsed : 0;
-        if (elapsed > 1000) { // Update FPS every second
+        if (elapsed > 1000) {
             frameCount = 0;
             lastTime = frameStart;
+
         }
 
         update(mainSimulation);
