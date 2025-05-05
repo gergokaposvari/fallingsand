@@ -105,6 +105,20 @@ build CMakeFiles/FallingSand.dir/particles/types/solids/IceParticle.cpp.o: CXX_C
   OBJECT_DIR = CMakeFiles/FallingSand.dir
   OBJECT_FILE_DIR = CMakeFiles/FallingSand.dir/particles/types/solids
 
+build CMakeFiles/FallingSand.dir/particles/types/FireParticle.cpp.o: CXX_COMPILER__FallingSand_unscanned_Debug /Users/kaposvarigergo/CLionProjects/FallingSand/particles/types/FireParticle.cpp || cmake_object_order_depends_target_FallingSand
+  DEP_FILE = CMakeFiles/FallingSand.dir/particles/types/FireParticle.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -mmacosx-version-min=15.3 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.32.4/include -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/sdl2/2.32.4/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_ttf/2.24.0/include/SDL2
+  OBJECT_DIR = CMakeFiles/FallingSand.dir
+  OBJECT_FILE_DIR = CMakeFiles/FallingSand.dir/particles/types
+
+build CMakeFiles/FallingSand.dir/particles/types/Explosive.cpp.o: CXX_COMPILER__FallingSand_unscanned_Debug /Users/kaposvarigergo/CLionProjects/FallingSand/particles/types/Explosive.cpp || cmake_object_order_depends_target_FallingSand
+  DEP_FILE = CMakeFiles/FallingSand.dir/particles/types/Explosive.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -mmacosx-version-min=15.3 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.32.4/include -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/sdl2/2.32.4/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_ttf/2.24.0/include/SDL2
+  OBJECT_DIR = CMakeFiles/FallingSand.dir
+  OBJECT_FILE_DIR = CMakeFiles/FallingSand.dir/particles/types
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FallingSand
@@ -113,7 +127,7 @@ build CMakeFiles/FallingSand.dir/particles/types/solids/IceParticle.cpp.o: CXX_C
 #############################################
 # Link the executable FallingSand
 
-build FallingSand: CXX_EXECUTABLE_LINKER__FallingSand_Debug CMakeFiles/FallingSand.dir/main.cpp.o CMakeFiles/FallingSand.dir/FSsimulation/Simulation.cpp.o CMakeFiles/FallingSand.dir/particles/types/PowderParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/LiquidParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/solids/StoneParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/liquids/LavaParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/liquids/WaterParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/solids/IceParticle.cpp.o | /opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib
+build FallingSand: CXX_EXECUTABLE_LINKER__FallingSand_Debug CMakeFiles/FallingSand.dir/main.cpp.o CMakeFiles/FallingSand.dir/FSsimulation/Simulation.cpp.o CMakeFiles/FallingSand.dir/particles/types/PowderParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/LiquidParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/solids/StoneParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/liquids/LavaParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/liquids/WaterParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/solids/IceParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/FireParticle.cpp.o CMakeFiles/FallingSand.dir/particles/types/Explosive.cpp.o | /opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -mmacosx-version-min=15.3
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.32.4/lib  /opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2.dylib  /opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib
   LINK_PATH = -L/opt/homebrew/Cellar/sdl2/2.32.4/lib

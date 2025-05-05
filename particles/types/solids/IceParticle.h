@@ -12,7 +12,7 @@ public:
     // Sets temperature related things
     IceParticle(): SolidParticle() {
         setMeltingPoint(0);
-        Particle::setTemperature(-20);
+        Particle::setTemperature(-30);
     }
 
     // Ice turns into water

@@ -62,6 +62,7 @@ public:
         return new Particle();
     }
 
+
     // Given the current neighborhood the particle determines where to move next,
     // direction is used to decide left or right, it is generated randomly in simulation.h
     virtual std::pair<int, int> nextPosition(std::array<std::array<Particle *, 15>, 15> &neighborhood, bool direction) { return {2,2}; }

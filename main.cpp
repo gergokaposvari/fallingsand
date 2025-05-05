@@ -3,11 +3,12 @@
 #include <SDL_ttf.h>
 #include "FSsimulation/Simulation.h"
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 800;
-const int CELL_SIZE = 2;
+const int WINDOW_WIDTH = 1200;
+const int WINDOW_HEIGHT = 840;
+const int CELL_SIZE = 3;
 bool running = true;
 bool placing = false;
+bool deleting = false;
 int BRUSH_SIZE = 5;
 
 // Places cells in a BRUSH_SIZE sized square
@@ -30,10 +31,30 @@ void mousePress(Simulation& mainSimulation) {
 
 }
 
+void deleteArea(Simulation& mainSimulation){
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    int gridX = mouseX / CELL_SIZE;
+    int gridY = mouseY / CELL_SIZE;
+
+    if (BRUSH_SIZE == 1) {
+        mainSimulation.deleteCell(gridY, gridX);
+    }else {
+        for (int i = -1*BRUSH_SIZE; i <= BRUSH_SIZE; i++) {
+            for (int j = -1*BRUSH_SIZE; j <= BRUSH_SIZE; j++) {
+                mainSimulation.deleteCell(gridY+i, gridX+j);
+            }
+        }
+    }
+}
+
 // Handles user input
 void update(Simulation& mainSimulation) {
     SDL_Event e;
+
     while (SDL_PollEvent(&e)) {
+
         switch (e.type) {
             case SDL_QUIT:
                 running = false;
@@ -43,10 +64,17 @@ void update(Simulation& mainSimulation) {
                     placing = true;
                     mousePress(mainSimulation);
                 }
+                if (e.button.button == SDL_BUTTON_RIGHT) {
+                    deleting = true;
+                    deleteArea(mainSimulation);
+                }
             break;
             case SDL_MOUSEBUTTONUP:
                 if (e.button.button == SDL_BUTTON_LEFT) {
                     placing = false;
+                }
+                if (e.button.button == SDL_BUTTON_RIGHT) {
+                    deleting = false;
                 }
             break;
             case SDL_KEYDOWN:
@@ -133,7 +161,7 @@ int main() {
     SDL_Event event;
 
     Uint32 frameStart;
-    const int FRAME_DELAY = 1000 / 60;
+    const int FRAME_DELAY = 1000 / 120;
     int simulateEveryXFrames = 0;
     int frameCount = 0;
     Uint32 lastTime = SDL_GetTicks();
@@ -154,7 +182,11 @@ int main() {
         if (placing) {
             mousePress(mainSimulation);
         }
+        if (deleting) {
+            deleteArea(mainSimulation);
+        }
         if (!running) break;
+
 
         mainSimulation.simulateTurn();
 
@@ -166,11 +198,7 @@ int main() {
 
         SDL_RenderPresent(renderer);
 
-        Uint32 frameTime = SDL_GetTicks() - frameStart;
-        if (frameTime < FRAME_DELAY) {
-            SDL_Delay(FRAME_DELAY - frameTime);
-            simulateEveryXFrames++;
-        }
+
     }
 
     TTF_CloseFont(font);

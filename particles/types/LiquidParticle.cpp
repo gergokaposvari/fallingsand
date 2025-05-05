@@ -20,8 +20,9 @@ std::pair<int, int> LiquidParticle::nextPosition(std::array<std::array<Particle 
         }
     }
     avgTemp /= countedParticles;
+    this->setTemperature(avgTemp);
     if (avgTemp < this->getFreezingPoint()) {
-        this->setTemperature(avgTemp);
+
         // (3,3) signals the liquid should freeze
         return std::make_pair(3, 3);
     }

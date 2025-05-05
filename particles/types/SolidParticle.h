@@ -7,8 +7,10 @@
 #include "../Particle.h"
 
 class SolidParticle : public Particle {
-    int meltingPoint;
+
 public:
+    int meltingPoint;
+
     SolidParticle() : Particle(SOLID) {
         Particle::setNeighborhoodSize(3);
     }
@@ -19,7 +21,6 @@ public:
     int getMeltingPoint() { return this->meltingPoint; }
 
     std::pair<int, int> nextPosition(std::array<std::array<Particle *, 15>, 15> &neighborhood, bool direction) override {
-
 
         // !!! Neighborhood is indexed absolutely in the 11x11 grid, the return value is given as where
         // should the current particle move next relative to its current position !!!
@@ -36,8 +37,9 @@ public:
             }
         }
         avgTemp /= countedParticles;
+        this->setTemperature(avgTemp);
         if (avgTemp > this->getMeltingPoint()) {
-            this->setTemperature(avgTemp);
+
             // (4,4) signals melting
             return std::make_pair(4, 4);
         }

@@ -23,12 +23,13 @@ class Simulation {
     std::mt19937 gen;
     std::uniform_int_distribution<int> dist;
     std::mutex gridMutex;
-public:
-    static const int rows = 400;
+    static const int rows = 280;
     static const int cols = 400;
+    std::mutex cellLocks[rows][cols];
+public:
     Particle* grid[rows][cols];
-    std::list<Particle*> movedParticles;
-    static const int nThreads = 1;
+    std::vector<std::list<Particle*>> movedParticlesPerThread;
+    static const int nThreads = 5;
 
     int turn = 0;
 
@@ -45,6 +46,7 @@ public:
                 }
             }
         }
+        movedParticlesPerThread.resize(nThreads);
     }
 
     ~Simulation() {
@@ -90,34 +92,32 @@ public:
             int startCol = i * colsPerChunk;
             int endCol = (i == totalChunks - 1) ? cols : startCol + colsPerChunk;
 
-            boost::asio::post(threadPool, [this, startCol, endCol]() {
-                this->processChunk(endCol, startCol);
+            boost::asio::post(threadPool, [this, startCol, endCol, i]() {
+                this->processChunk(endCol, startCol, i);
+                this->flushMoved(i);
             });
         }
 
-        boost::asio::post(threadPool, [this]() {
-            this->flushMoved();
-        });
-
     }
 
 
-    void processChunk(int endCol, int startCol) {
+    void processChunk(int endCol, int startCol, int threadIndex) {
         for (int x = rows-2; x > 0; x--) {
             if (x % 2 == 0) {
                 for (int y = startCol; y < endCol; y++) {
-                    processParticle(x, y);
+                    processParticle(x, y, threadIndex);
                 }
             } else {
                 for (int y = endCol; y > startCol; y--) {
-                    processParticle(x, y);
+                    processParticle(x, y, threadIndex);
                 }
             }
         }
+        turn++;
     }
 
     // This is needed to alternate left to right order
-    void processParticle(int x, int y) {
+    void processParticle(int x, int y, int threadIndex) {
 
         if (grid[x][y]->getTraversed())
             return;
@@ -150,16 +150,37 @@ public:
                 grid[x][y] = grid[x][y]->freeze();
             } else if (move == std::make_pair(4, 4)) {
                 grid[x][y] = grid[x][y]->melt();
-            } else {
+            } else if (move == std::make_pair(15, 15)) {
+                grid[x][y] = new Particle();
+            } else if (move.first == 33){
                 boost::unique_lock<std::mutex> lock(gridMutex);
-                Particle *temp = grid[x][y];
-                grid[x][y] = grid[x+move.first][y+move.second];
-                grid[x+move.first][y+move.second] = temp;
+                int maxDist = move.second;
 
-                grid[x+move.first][y+move.second]->setTraversed(true);
-                movedParticles.push_back(grid[x+move.first][y+move.second]);
+                for (int dx = -maxDist; dx <= maxDist; ++dx) {
+                    for (int dy = -maxDist; dy <= maxDist; ++dy) {
+                        int nx = x + dx;
+                        int ny = y + dy;
+                        if (nx >= 1 && nx < rows-1 && ny >= 1 && ny < cols-1) {
+                            double distance = sqrt(dx * dx + dy * dy);
+                            if (distance <= maxDist) {
+                                grid[nx][ny] = new FireParticle(35);
+                            }
+                        }
+                    }
+                }
 
                 lock.unlock();
+            } else {
+                int newX = x + move.first;
+                int newY = y + move.second;
+
+                std::scoped_lock lock(cellLocks[x][y], cellLocks[newX][newY]);
+                Particle *temp = grid[x][y];
+                grid[x][y] = grid[newX][newY];
+                grid[newX][newY] = temp;
+
+                grid[newX][newY]->setTraversed(true);
+                movedParticlesPerThread[threadIndex].push_back(grid[newX][newY]);
             }
         }
     }
@@ -174,12 +195,11 @@ public:
         }
     }
 
-    void flushMoved() {
-        std::unique_lock<std::mutex> lock(gridMutex);
-        for (Particle* p : movedParticles) {
+    void flushMoved(const int i) {
+        for (Particle* p : movedParticlesPerThread[i]) {
             p->setTraversed(false);
         }
-        movedParticles.clear();
+        movedParticlesPerThread.clear();
     }
 
     void putCell(int x, int y) {
@@ -197,6 +217,10 @@ public:
                 grid[x][y] = particleManager.createNewParticle();
             }
         }
+    }
+    void deleteCell(int x, int y) {
+        std::scoped_lock lock(cellLocks[x][y]);
+        grid[x][y] = new Particle();
     }
 
     void testPerf() {

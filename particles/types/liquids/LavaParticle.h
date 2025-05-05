@@ -15,10 +15,10 @@ public:
 
     // Sets temperature related variables and density, also color randomness.
     LavaParticle() : LiquidParticle() {
-        setFreezingPoint(1400);
+        setFreezingPoint(480);
         LiquidParticle::setNeighborhoodSize(7);
         //setBoilingPoint(20000000);
-        Particle::setTemperature(1900);
+        Particle::setTemperature(700);
         LiquidParticle::setDensity(3100);
         color = rand() % 5;
     };

@@ -9,7 +9,8 @@ enum State {
     EMPTY,
     POWDER,
     LIQUID,
-    SOLID
+    SOLID,
+    FIRE
 };
 
 #endif //STATE_H
