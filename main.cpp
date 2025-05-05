@@ -90,6 +90,8 @@ void update(Simulation& mainSimulation) {
                     mainSimulation.switchActive();
                 }else if (e.key.keysym.sym == SDLK_t) {
                     mainSimulation.testPerf();
+                }else if (e.key.keysym.sym == SDLK_c) {
+                    mainSimulation.clearGrid();
                 }
 
                 break;

@@ -21,7 +21,7 @@ public:
 
 
     SDL_Color getColor() const override {
-        return {255, 255, 0, 200};
+        return {1, 50, 32, 200};
     }
 
 

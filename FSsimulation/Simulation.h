@@ -26,10 +26,12 @@ class Simulation {
     static const int rows = 280;
     static const int cols = 400;
     std::mutex cellLocks[rows][cols];
+
 public:
     Particle* grid[rows][cols];
     std::vector<std::list<Particle*>> movedParticlesPerThread;
-    static const int nThreads = 5;
+    static const int nThreads = 4;
+    std::mutex movedParticlesPerThreadMutex[nThreads];
 
     int turn = 0;
 
@@ -174,7 +176,7 @@ public:
                 int newX = x + move.first;
                 int newY = y + move.second;
 
-                std::scoped_lock lock(cellLocks[x][y], cellLocks[newX][newY]);
+                std::scoped_lock lock(cellLocks[x][y], cellLocks[newX][newY], movedParticlesPerThreadMutex[threadIndex]);
                 Particle *temp = grid[x][y];
                 grid[x][y] = grid[newX][newY];
                 grid[newX][newY] = temp;
@@ -196,13 +198,15 @@ public:
     }
 
     void flushMoved(const int i) {
+        std::scoped_lock lock(movedParticlesPerThreadMutex[i]);
         for (Particle* p : movedParticlesPerThread[i]) {
             p->setTraversed(false);
         }
-        movedParticlesPerThread.clear();
+        movedParticlesPerThread[i].clear();
     }
 
     void putCell(int x, int y) {
+        std::scoped_lock lock(cellLocks[x][y]);
         int place = 0;
         if (particleManager.createNewParticle()->getState() == SOLID) {
             place = 1;
@@ -226,7 +230,16 @@ public:
     void testPerf() {
         for ( int i = 1; i < cols-1; i++) {
             for (int j = 1; j < 100; j++) {
+                std::scoped_lock lock(cellLocks[j][i]);
                 grid[j][i] = new WaterParticle();
+            }
+        }
+    }
+
+    void clearGrid() {
+        for (int x = 1; x < rows-1; ++x) {
+            for (int y = 1; y < cols-1; ++y) {
+                grid[x][y] = new Particle();
             }
         }
     }
