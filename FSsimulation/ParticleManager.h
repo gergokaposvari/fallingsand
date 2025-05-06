@@ -14,6 +14,7 @@
 #include "../particles/types/PowderParticle.h"
 #include "../particles/types/liquids/WaterParticle.h"
 #include "../particles/types/liquids/LavaParticle.h"
+#include "../particles/types/powders/ExplosivePowderParticle.h"
 #include "../particles/types/powders/SandParticle.h"
 #include "../particles/types/solids/StoneParticle.h"
 
@@ -38,6 +39,8 @@ public:
         particleNames.emplace_back("Lava");
         particleFactories.emplace_back([]() { return new Explosive(60); });
         particleNames.emplace_back("Explosive");
+        particleFactories.emplace_back([]() { return new ExplosivePowderParticle(20); });
+        particleNames.emplace_back("Explosive Powder");
         particleFactories.emplace_back([]() { return new FireParticle(); });
         particleNames.emplace_back("Fire");
     }

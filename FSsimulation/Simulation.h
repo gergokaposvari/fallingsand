@@ -206,7 +206,6 @@ public:
     }
 
     void putCell(int x, int y) {
-        std::scoped_lock lock(cellLocks[x][y]);
         int place = 0;
         if (particleManager.createNewParticle()->getState() == SOLID) {
             place = 1;
@@ -223,7 +222,9 @@ public:
         }
     }
     void deleteCell(int x, int y) {
-        std::scoped_lock lock(cellLocks[x][y]);
+        if (x > rows-2 || x <= 0 || y <= 0  || y > cols-2) {
+            return;
+        }
         grid[x][y] = new Particle();
     }
 

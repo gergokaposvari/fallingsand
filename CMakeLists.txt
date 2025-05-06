@@ -41,7 +41,9 @@ add_executable(FallingSand main.cpp
         particles/types/FireParticle.cpp
         particles/types/FireParticle.h
         particles/types/Explosive.cpp
-        particles/types/Explosive.h)
+        particles/types/Explosive.h
+        particles/types/powders/ExplosivePowderParticle.h
+        particles/types/powders/ExplosivePowderParticle.cpp)
 
 # Include SDL2 headers
 target_include_directories(FallingSand PRIVATE ${SDL2_INCLUDE_DIRS})
